@@ -33,13 +33,10 @@ export default {
 .appclass {
     min-height: 100vh;
     background-image: #{$bcg-app-color};
-    // background-image: linear-gradient(#800080, lighten(#800080, 5%));
-    // background-color: #800080;
     color: $white-color;
     padding-bottom: 20px;
 }
 #app {
-    // font-family: "Open Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

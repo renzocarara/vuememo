@@ -1,18 +1,8 @@
 <template>
   <div class="container-fluid my-footer">
-      <!-- <div class="container"> -->
             &copy; 2020 - Renzo Carara
-      <!-- </div> -->
   </div>
 </template>
-
-<script>
-export default {
-    data() {
-        return {};
-    }
-};
-</script>
 
 <style lang="scss" scoped>
 @import "@/sass/app.scss";

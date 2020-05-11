@@ -1,7 +1,6 @@
 <template>
   <div class="cardbox">
     <div class="d-flex h-100 justify-content-center align-content-center flex-column">
-        <!-- <transition name="fade" mode="in-out" appear> -->
         <transition name="bounce" mode="out-in">
             <img v-if="isUncoveredCard" key="open" class="uncovered-card h-100 img-box" :src="imgPath" alt="card">
             <img v-else-if="isCoveredCard" key="closed"  @click="handleClick();" class="covered-card h-100 img-box clickable" :src="coverPath" alt="copertina della card">
@@ -57,7 +56,7 @@ export default {
 
                 this.setCardOpen(this.index); // setto lo status della card appena cliccata a "CARD_OPEN"
                 this.incrementTotalClicks(); // incremento il numero totale di clicks
-                console.log("aperto card n.", this.index);
+                // console.log("aperto card n.", this.index);
 
                 if (this.isOneCardOpen) {
                     // c'è già un'altra card scoperta sulla GameTable
@@ -75,9 +74,7 @@ export default {
                             coupledCards.push(indexAndId);
                         }
                     }
-                    // console.log("table", table);
-                    // console.log("coupledCards.length", coupledCards.length);
-                    console.log("coupledCards", coupledCards);
+                    // console.log("coupledCards", coupledCards);
 
                     if (coupledCards[0].id == coupledCards[1].id) {
                         // le 2 cards matchano, le rimuovo
@@ -131,22 +128,6 @@ export default {
         isCoveredCard() {
             return this.getCardStatus(this.index) == CARD_CLOSED;
         },
-        // areCardsMatching() {
-        //     // DESCRIZIONE:
-        //     // ritorna TRUE se le 2 cards scoperte matchano, altrimenti ritorna FALSE
-
-        //     // areCardsMatching fa una scansione della gametable, trova le 2 cards che hanno status=CARD_OPEN e verifica se il campo "id" è uguale
-        //     let table = this.getGameTable; // recupero la GameTable con tutte le cards
-        //     // ricavo gli id delle 2 carte scoperte, analizzo con la funzione "filter" l'array "table"
-        //     let result = table.filter(obj => {
-        //         // obj è il singolo elemento dell'array che viene valutato di volta in volta
-        //         return obj.status === 1; // quando la "arrow function" restituiscE true, quell'elemento viene inserito nel nuovo array che viene ritornato dalla filter
-        //     });
-        //     // console.log("RESULT:", result);
-        //     // console.log("matchano?:", result[0].id == result[1].id);
-
-        //     return result[0].id == result[1].id; // se gli id matchano, ritorno "true"
-        // },
         isOneCardOpen() {
             return this.getOpenClicks() == 1;
         },
@@ -235,10 +216,4 @@ export default {
         height: 130px;
     }
 }
-// @media screen and (min-width: 992px) {
-//     .cardbox {
-//         width: 130px;
-//         height: 130px;
-//     }
-// }
 </style>

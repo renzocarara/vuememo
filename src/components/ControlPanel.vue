@@ -17,7 +17,6 @@
             <span>Timer:</span>
             <span class="timer"></span>
         </div> -->
-
     </div>
 </template>
 
@@ -33,7 +32,7 @@ export default {
     name: "ControlPanel",
     data() {
         return {
-            theme: "mix"
+            theme: "mix" // tema iniziale
         };
     },
     mounted() {
@@ -47,7 +46,6 @@ export default {
             "resetTotalClicks",
             "resetOpenClicks"
         ]),
-        // ...mapGetters(["getGameTable"]),
         ...mapState(["gameTableSize", "cardClosed", "cardOpen", "cardRemoved"]),
 
         selectTheme() {
@@ -144,6 +142,7 @@ export default {
     margin-left: 8px;
 }
 .score {
+    font-weight: bold;
     background-color: $white-color;
     color: black;
     border-radius: 5px;
@@ -164,14 +163,10 @@ select {
     margin-left: 10px;
 }
 
-.score {
-    font-weight: bold;
-}
-
-.timer-box {
-    margin-left: 10px;
-}
-.timer {
-    font-weight: bold;
-}
+// .timer-box {
+//     margin-left: 10px;
+// }
+// .timer {
+//     font-weight: bold;
+// }
 </style>

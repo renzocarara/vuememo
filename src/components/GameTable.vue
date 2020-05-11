@@ -9,10 +9,8 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import CardBox from "@/components/CardBox.vue";
 
-// import { mapState } from "vuex";
 import { mapGetters } from "vuex";
 
 export default {
@@ -21,15 +19,11 @@ export default {
         CardBox
     },
     methods: {
-        //
         // questi metodi accedono tramite "commit" ad un metodo dello Store
         // cioè sto commitando una "mutation" (che agisce su un dato dello store)
         // increment() {
         //     this.$store.commit("increment");
         // },
-        // decrement() {
-        //     this.$store.commit("decrement");
-        // }
     },
     computed: {
         // mappo dei getters definiti nello Store per renderli disponibili a questo componenete
@@ -38,10 +32,6 @@ export default {
             // per una migliore leggibilità mappo il getter `this.$store.getters.getGameTable` associandolo al nome 'cards'
             cards: "getGameTable"
         })
-        // ...mapState(["counter", "prop_text", "prop_c", "my_flag"]),
-        // computedCount() {
-        // return this.$store.state.counter;
-        // }
     }
 };
 </script>
