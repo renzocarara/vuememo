@@ -1,7 +1,7 @@
 <template>
   <div class="my-page-min-h d-flex justify-content-center align-content-center flex-column">
     <div>
-        <h4>Questa è un esercizio didattico sull'utilizzo di <span class="vuex-text">Vuex</span>.</h4>
+        <h4>Questa è un esercizio sull'utilizzo di <span class="vuex-text">Vuex</span>.</h4>
             <p>L'applicazione utilizza:</p>
             <p class="d-flex justify-content-center align-content-center">
                 <ul class="text-left">
