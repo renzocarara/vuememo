@@ -1,32 +1,65 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
+  <div id="app" class="appclass">
+      <div class="container">
+              <h1 class="mb-0 pt-2">MemoVue</h1>
+              <div class="" id="nav">
+                  <router-link to="/">Home</router-link> |
+                  <router-link to="/instructions">Instructions</router-link> |
+                  <router-link to="/about">About</router-link>
+              </div>
+              <transition name="fade" mode="out-in" appear>
+                 <router-view />
+              </transition>
+              <my-footer></my-footer>
+      </div>
   </div>
 </template>
 
-<style lang="scss">
+
+<script>
+import MyFooter from "@/components/MyFooter.vue";
+
+export default {
+    name: "App",
+    components: {
+        MyFooter
+    }
+};
+</script>
+
+<style lang="scss" scoped>
+@import "@/sass/app.scss";
+
+.appclass {
+    min-height: 100vh;
+    background-image: #{$bcg-app-color};
+    // background-image: linear-gradient(#800080, lighten(#800080, 5%));
+    // background-color: #800080;
+    color: $white-color;
+    padding-bottom: 20px;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+    // font-family: "Open Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
 }
 
 #nav {
-  padding: 30px;
+    padding-bottom: 10px;
+    a {
+        font-weight: bold;
+        color: $white-color;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+        &.router-link-exact-active {
+            color: $red-color;
+            text-decoration: none;
+            cursor: default;
+        }
+        &:hover {
+            color: $red-color;
+            text-decoration: none;
+        }
     }
-  }
 }
 </style>
