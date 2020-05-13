@@ -26,7 +26,7 @@ import { GAMETABLE_SIZE, CARD_CLOSED } from "@/const.js";
 
 import { mapMutations } from "vuex";
 import { mapGetters } from "vuex";
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 
 export default {
     name: "ControlPanel",
@@ -44,9 +44,10 @@ export default {
             "initGameTable",
             "setTheme",
             "resetTotalClicks",
-            "resetOpenClicks"
+            "resetOpenClicks",
+            "setGameCompleted"
         ]),
-        ...mapState(["gameTableSize", "cardClosed", "cardOpen", "cardRemoved"]),
+        // ...mapState(["gameTableSize", "cardClosed", "cardOpen", "cardRemoved"]),
 
         selectTheme() {
             this.setTheme(this.theme);
@@ -61,7 +62,9 @@ export default {
             // azzero contatori clicks
             this.resetTotalClicks();
             // azzero openClicks
-            this.resetOpenClicks(); // setto openClicks a zero
+            this.resetOpenClicks();
+            // resetto flag di fine gioco
+            this.setGameCompleted(false);
 
             // azzero timer
         },

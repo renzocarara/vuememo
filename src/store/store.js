@@ -11,6 +11,7 @@ export const store = new Vuex.Store({
         theme: "mix", // è una stringa che indica il tema corrente
         totalClicks: 0, // è il numero totale di clicks effettuati dall'utenete durante una partita
         openClicks: 0, // numero corrente di cards scoperte (può valere 0, 1 o 2)
+        gameCompleted: false,
     },
     getters: {
         getGameTable(state) {
@@ -37,6 +38,9 @@ export const store = new Vuex.Store({
         getOpenClicks(state) {
             // console.log("openClicks è", state.openClicks);
             return state.openClicks; // ritorna 0, 1 o 2
+        },
+        getGameCompleted(state) {
+            return state.gameCompleted;
         },
     },
     mutations: {
@@ -68,21 +72,16 @@ export const store = new Vuex.Store({
         },
         incrementOpenClicks(state) {
             state.openClicks++;
-            console.log("openClicks diventa", state.openClicks);
+            // console.log("openClicks diventa", state.openClicks);
         },
         resetOpenClicks(state) {
             // azzera il conteggio dei clicks aperti
             state.openClicks = 0;
         },
+        setGameCompleted(state, status) {
+            state.gameCompleted = status;
+        },
     },
     //commits the mutation, it's asynchronous
-    actions: {
-        // showing passed with payload, represented as asynchNum (an object)
-        // asyncDecrement({ commit }, asyncNum) {
-        //     setTimeout(function() {
-        //         //the asyncNum objects could also just be static amounts
-        //         commit("decrement", asyncNum.by);
-        //     }, asyncNum.duration);
-        // },
-    },
+    actions: {},
 });

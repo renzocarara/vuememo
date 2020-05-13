@@ -1,11 +1,16 @@
 <template>
-        <div class="d-flex justify-content-around flex-wrap game-table">   
-                      
+<div>
+    <transition  name="fade" mode="out-in">
+        <div key="table-full" v-if="!isGameCompleted" class="d-flex justify-content-around flex-wrap game-table">   
              <card-box v-for="(card, index) in cards"
                 :key="index"
                 :card="card">
              </card-box>
         </div>
+        <!-- il componente che segue viene renderizzato quando la partita è finita -->
+        <div key="table-empty" v-else class="d-flex justify-content-around flex-wrap game-table game-over"><h1>GAME OVER!</h1></div>
+    </transition>
+</div>
 </template>
 
 <script>
@@ -21,8 +26,8 @@ export default {
     methods: {
         // questi metodi accedono tramite "commit" ad un metodo dello Store
         // cioè sto commitando una "mutation" (che agisce su un dato dello store)
-        // increment() {
-        //     this.$store.commit("increment");
+        // metodo_x() {
+        //     this.$store.commit("mutation_x_dello_store");
         // },
     },
     computed: {
@@ -30,8 +35,13 @@ export default {
         // ...mapGetters(["getGameTable"])
         ...mapGetters({
             // per una migliore leggibilità mappo il getter `this.$store.getters.getGameTable` associandolo al nome 'cards'
-            cards: "getGameTable"
-        })
+            cards: "getGameTable",
+            getGameCompleted: "getGameCompleted"
+        }),
+        isGameCompleted() {
+            // questa è a tutti gli effetti una proprietà, per cui viene richiamata con la notazione "senza" parentesi tonde
+            return this.getGameCompleted;
+        }
     }
 };
 </script>

@@ -18,9 +18,31 @@ button:focus {
 }
 
 // transizione in uscita, per scomparire gradualmente
-.fade-leave-active {
+.fade-leave-active:not(.game-over) {
     transition: opacity 0.5s;
 }
 .fade-leave-to {
     opacity: 0;
+}
+
+// --------------------------- ANIMATIONs -----------------------------------
+.bounce-enter-active:not(.covered-card):not(.uncovered-card) {
+    animation: bounce-in 0.5s;
+}
+// non applico la animation all'elemento ".covered-card" in uscita, in modo che sparisca subito
+// e non possa essere cliccato una seconda volta, durante la animation
+.bounce-leave-active:not(.covered-card):not(.uncovered-card) {
+    animation: bounce-in 0.5s;
+}
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
 }

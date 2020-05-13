@@ -37,7 +37,8 @@ export default {
             "incrementOpenClicks",
             "resetOpenClicks",
             "setCardClosed",
-            "setCardRemoved"
+            "setCardRemoved",
+            "setGameCompleted"
         ]),
         ...mapGetters(["getOpenClicks"]),
 
@@ -76,6 +77,8 @@ export default {
                     }
                     // console.log("coupledCards", coupledCards);
 
+                    // NOTA: uso delle setTimeout per ritardare un poco la sparizione delle cards (ovvero il cambiamento di status)
+
                     if (coupledCards[0].id == coupledCards[1].id) {
                         // le 2 cards matchano, le rimuovo
                         setTimeout(function() {
@@ -83,16 +86,25 @@ export default {
                             self.setCardRemoved(coupledCards[1].index);
                             // le 2 cards sono state rimosse, resetto il conteggio degli openClicks
                             self.resetOpenClicks(); // setto openClicks a zero
-                        }, 800);
+
+                            let table = self.getGameTable; // recupero la GameTable con tutte le cards
+                            // verifico se tutte le cards sono state rimosse, cioè se il gioco è completato
+                            let remainingCards = table.filter(
+                                card => card.status === CARD_CLOSED
+                            );
+                            if (remainingCards.length == false) {
+                                console.log("gioco completato!");
+                                self.setGameCompleted(true);
+                            }
+                        }, 800); // lascio le cards, che matchano, visibili per 0.8 secondi prima di far partire l'animazione
                     } else {
-                        // le 2 cards non matchano
-                        // copro le 2 cards che erano scoperte
+                        // le 2 cards non matchano, copro le 2 cards dopo  secondo
                         setTimeout(function() {
                             self.setCardClosed(coupledCards[0].index);
                             self.setCardClosed(coupledCards[1].index);
                             // le 2 cards sono state coperte nuovamente, resetto il conteggio degli openClicks
                             self.resetOpenClicks(); // setto openClicks a zero
-                        }, 1000);
+                        }, 1000); // lascio le cards, che non matchano, visibili per 1 secondo prima di coprirle
                     }
                 } else {
                     // non ci sono carte già scoperte sulla GameTable
@@ -156,38 +168,6 @@ export default {
 }
 .clickable {
     cursor: pointer;
-}
-//
-
-// .uncovered-card {
-//     animation: fad 1s linear;
-// }
-// @keyframes fad {
-//     0% {
-//         opacity: 0;
-//     }
-// }
-// --------------------------- ANIMATIONs -----------------------------------
-
-.bounce-enter-active:not(.covered-card):not(.uncovered-card) {
-    animation: bounce-in 0.5s;
-}
-// non applico la animation all'elemento ".covered-card" in uscita, in modo che sparisca subito
-// e non possa essere cliccato una seconda volta, durante la animation
-.bounce-leave-active:not(.covered-card):not(.uncovered-card) {
-    animation: bounce-in 0.5s;
-}
-@keyframes bounce-in {
-    0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1.5);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.3;
-    }
 }
 //
 //

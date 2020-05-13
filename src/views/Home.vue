@@ -2,7 +2,7 @@
         <div class="">
              <game-table></game-table>
              <control-panel></control-panel>
-        </div>
+        </div> 
 </template>
 
 <script>
@@ -26,9 +26,6 @@ export default {
         // increment() {
         //     this.$store.commit("increment");
         // },
-        // decrement() {
-        //     this.$store.commit("decrement");
-        // }
     },
     computed: {
         // ...mapGetters(["getGameTable"])
@@ -41,6 +38,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/sass/app.scss";
+
 .home-page {
     border: 2px solid yellow;
     // background-color: bisque;
