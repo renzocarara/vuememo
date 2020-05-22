@@ -1,6 +1,10 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { CARD_OPEN, CARD_CLOSED, CARD_REMOVED } from "@/const.js";
+import {
+    CARD_OPEN,
+    CARD_CLOSED,
+    CARD_REMOVED
+} from "@/const.js";
 
 Vue.use(Vuex);
 
@@ -29,6 +33,7 @@ export const store = new Vuex.Store({
             };
         },
         getTheme(state) {
+            // console.log("tema corrente in store:", state.theme);
             return state.theme;
         },
         getTotalClicks(state) {

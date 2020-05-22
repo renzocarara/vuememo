@@ -32,7 +32,7 @@ export default {
     name: "ControlPanel",
     data() {
         return {
-            theme: "mix" // tema iniziale
+            theme: this.$store.getters.getTheme // leggo il tema corrente
         };
     },
     mounted() {
